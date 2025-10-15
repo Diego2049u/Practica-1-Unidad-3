@@ -99,8 +99,8 @@ DATABASES = {
                 {"ssl": {"ca": os.getenv("MYSQL_SSL_CA")}}
                 if os.getenv("MYSQL_SSL_CA")
                 else {}
-            )
-        }
+            ),
+        },
     }
 }
 
