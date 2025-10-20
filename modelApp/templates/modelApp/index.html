@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Agregar Trabajador{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-dark display-5 text-center">
+        <img src="{% static 'imagenes/logo.jpg' %}" width="100px" alt="">
+        Agregar Trabajador
+    </div>
+
+    <form action="" method="post">
+        <table class="table">
+            {{ form.as_table}}
+            {% csrf_token %}
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Guardar" class="btn btn-dark">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Empleados{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+    <!-- Encabezado con logo -->
+    <div class="alert alert-dark display-5 text-center">
+      <img src="{% static 'imagenes/logo.jpg' %}" width="100px" alt="">
+      Listado Trabajadores
+    </div>
+
+    <!-- Si hay empleados -->
+    {% if empleados %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            Proyecto CRUD Admin Simplificado 1 model 37
+            <th>Fono</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for emp in empleados %}
+            <tr>
+              <td scope="row">{{ emp.id }}</td>
+              <td>{{ emp.nombre }}</td>
+              <td>{{ emp.email }}</td>
+              <td>{{ emp.fono }}</td>
+              <td>
+                <!-- Botón editar -->
+                <a
+                  href="{% url 'trabajadores:editar' emp.id %}"
+                  class="btn btn-success btn-sm"
+                >
+                  <i class="bi bi-pencil"></i>
+                </a>
+
+                <!-- Botón eliminar -->
+                <a
+                  href="/eliminarEmpleado/{{ emp.id }}"
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="bi bi-trash"></i>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <!-- Si no hay empleados -->
+      <div class="alert alert-info">No hay Empleados</div>
+    {% endif %}
+  </div>
+{% endblock %}
